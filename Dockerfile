@@ -4,10 +4,10 @@ FROM python:3.4.3
 MAINTAINER yeasy@github
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV TZ Asia/Shanghai
+ENV TZ Etc/UTC
 
 # Installing Mongo Connector which will connect MongoDB and Elasticsearch
-RUN pip install mongo-connector==2.1
+RUN pip install 'mongo-connector[elastic5]'
 
 COPY startup.sh /tmp/
 
@@ -19,4 +19,3 @@ VOLUME /data
 
 # Sample usage when no commands is given outside
 CMD ["/bin/bash", "/tmp/startup.sh"]
-
